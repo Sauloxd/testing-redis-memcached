@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+ 
+scenarios:
+  - name: "Memcached request"
+    flow:
+      - post:
+          url: "/memcached/charge_request"
+          json:
+            unit: 1

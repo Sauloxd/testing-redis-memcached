@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+ 
+scenarios:
+  - name: "Single request"
+    flow:
+      - post:
+          url: "/redis/charge_request_single"
+          json:
+            unit: 1
