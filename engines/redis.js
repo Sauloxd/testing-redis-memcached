@@ -112,7 +112,6 @@ async function chargeRedis(redisClient, key, charges) {
 
 // Since Redis is single threaded, this probably is not a good idea, since this can block the main thread and became a bottleneck for other Redis operations.
 // Also, adding a "business rule" as a database verification can make the system more complex and harder to reason about.
-// As 
 async function getBalanceAndChargeRedis(redisClient, key, charges) {
     return new Promise((resolve, reject) => {
         redisClient.eval("if tonumber(redis.call('GET', KEYS[1])) >= tonumber(ARGV[1]) then return redis.call('DECRBY', KEYS[1], ARGV[1]) else return { ARGV[2], redis.call('GET', KEYS[1]) } end",
