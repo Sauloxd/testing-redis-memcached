@@ -45,7 +45,7 @@ app.get('/redis/reset', async (req, res, next) => {
   }
 });
 
-app.get('/redis/charge_request_single', async (req, res, next) => {
+app.post('/redis/charge_request_single', async (req, res, next) => {
   try {
     res.json(await chargeRequestRedisSingleCommand(req.body));
   } catch (err) {
